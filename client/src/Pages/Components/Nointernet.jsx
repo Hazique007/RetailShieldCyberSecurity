@@ -1,7 +1,7 @@
 // components/NoInternet.jsx
 import React from "react";
 import Lottie from "lottie-react";
-import noInternetAnim from "../../assets/animations/No Connection.json"; // your Lottie file path
+import noInternetAnim from "../../assets/Animations/No Connection.json"; // your Lottie file path
 
 const NoInternet = () => {
   return (
