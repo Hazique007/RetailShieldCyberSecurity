@@ -15,7 +15,7 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: ["http://localhost:5174","https://retail-shield-cyber-security-zmlz.vercel.app/" ], // add frontend domains here
+    origin: ["http://localhost:5174","https://retail-shield-cyber-security-zmlz.vercel.app" ], // add frontend domains here
     credentials: true, // only needed if you're sending cookies/auth headers
   })
 );
