@@ -22,6 +22,7 @@ app.use(cors({
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // add this
   allowedHeaders: ["Content-Type", "Authorization"]     // and this
 }));
+app.options('*', cors());
 app.use(express.json());
 
 startCronJobs();
