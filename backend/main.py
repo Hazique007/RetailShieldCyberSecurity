@@ -6,8 +6,8 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 origins = [
-    "",  # your React/Vite frontend (local)
-    "http://localhost:3000",  # your Node.js server
+    "https://retail-shield-cyber-security-zmlz.vercel.app/",  # your React/Vite frontend (local)
+    "https://retailshieldcybersecurity-1.onrender.com",  # your Node.js server
     "*"  # (Optional) allow all origins — use this in dev only
 ]
 

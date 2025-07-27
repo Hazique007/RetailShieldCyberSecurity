@@ -159,7 +159,7 @@ export const login = async (req, res) => {
     let prediction = "unknown";
 
     try {
-      const response = await axios.post("http://localhost:8000/predict/biometric", {
+      const response = await axios.post("https://retailshieldcybersecurity-fastapi.onrender.com/predict/biometric", {
         originalProfile: user.biometricProfile,
         attemptProfile: typingPattern,
       });
