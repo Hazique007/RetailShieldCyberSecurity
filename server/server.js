@@ -27,7 +27,7 @@ app.use(express.json());
 
 startCronJobs();
 
-app.get("/debug", (req, res) => res.send("🟢 Debug route works!"));
+// app.get("/debug", (req, res) => res.send("🟢 Debug route works!"));
 app.use("/api/auth", authRoutes); // ✅ working now
 app.use("/api/empdash",employeeDashboardRoute)
 app.use("/api/pos",posRoutes)
