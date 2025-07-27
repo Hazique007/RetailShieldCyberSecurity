@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { initTypingTracker, cleanupTypingTracker, extractFeatures } from "../../utils/typingTracker.js";
 import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
-import loginAnimation from '../../assets/animations/login-loading.json';
+import loginAnimation from '../../assets/Animations/login-loading.json';
 
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
