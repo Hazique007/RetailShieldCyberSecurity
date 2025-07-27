@@ -36,7 +36,7 @@ const ManageUsers = () => {
   const fetchUsers = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://localhost:3000/api/auth/users", {
+      const res = await axios.get("https://retailshieldcybersecurity-1.onrender.com/api/auth/users", {
         params: {
           page: currentPage,
           limit: usersPerPage,
@@ -56,7 +56,7 @@ const ManageUsers = () => {
   const handleDelete = async (id) => {
     // if (!window.confirm("Are you sure you want to delete this user?")) return;
     try {
-      await axios.delete(`http://localhost:3000/api/auth/${id}`);
+      await axios.delete(`https://retailshieldcybersecurity-1.onrender.com/api/auth/${id}`);
       fetchUsers();
       showToast("User deleted successfully", "success");
     } catch (err) {
@@ -76,7 +76,7 @@ const ManageUsers = () => {
 
   const submitEdit = async () => {
     try {
-      await axios.put(`http://localhost:3000/api/auth/${editingUserId}`, editForm);
+      await axios.put(`https://retailshieldcybersecurity-1.onrender.com/api/auth/${editingUserId}`, editForm);
       setEditingUserId(null);
       fetchUsers();
       showToast("User updated successfully", "success");

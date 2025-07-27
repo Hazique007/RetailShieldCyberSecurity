@@ -22,7 +22,7 @@ const Compliancescorebar = () => {
     useEffect(()=>{
     const fetchUser=async()=>{
       try{
-         const res = await axios.get(`http://localhost:3000/api/auth/users/${id}`);
+         const res = await axios.get(`https://retailshieldcybersecurity-1.onrender.com/api/auth/users/${id}`);
          setUser(res.data);
       }catch (err){
          console.error('Error fetching user:', err);

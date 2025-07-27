@@ -25,7 +25,7 @@ const ForgotPassword = () => {
     if (!email) return toast.error('📧 Please enter your email.');
     setLoading(true);
     try {
-      await axios.post('http://localhost:3000/api/auth/request-otp', { email });
+      await axios.post('https://retailshieldcybersecurity-1.onrender.com/api/auth/request-otp', { email });
       toast.success('OTP sent successfully!');
       setStep(2);
     } catch (err) {
@@ -40,7 +40,7 @@ const ForgotPassword = () => {
 
     setLoading(true);
     try {
-      await axios.post('http://localhost:3000/api/auth/verify-otp', {
+      await axios.post('https://retailshieldcybersecurity-1.onrender.com/api/auth/verify-otp', {
         email: email.trim(),
         otp: otpValue
       });

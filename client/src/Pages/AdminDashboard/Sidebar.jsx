@@ -47,7 +47,7 @@ const AdminSidebar = ({ activePage, setActivePage, unreadCount, setUnreadCount }
   useEffect(() => {
     const fetchUnread = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/api/notifications/unread-count');
+        const res = await axios.get('https://retailshieldcybersecurity-1.onrender.com/api/notifications/unread-count');
         setUnreadCount(res.data.count || 0);
       } catch (error) {
         console.error('Failed to fetch unread count:', error);

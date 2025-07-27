@@ -47,7 +47,7 @@ const Login = () => {
   // ⏳ Delay API call by 5 seconds to show Lottie animation
   setTimeout(async () => {
     try {
-      const { data } = await axios.post('http://localhost:3000/api/auth/login', {
+      const { data } = await axios.post('https://retailshieldcybersecurity-1.onrender.com/api/auth/login', {
         email,
         password,
         typingPattern,

@@ -12,7 +12,7 @@ const SuspiciousUsers = () => {
   const fetchUsers = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:3000/api/auth/sususers?search=${search}`);
+      const res = await axios.get(`https://retailshieldcybersecurity-1.onrender.com/api/auth/sususers?search=${search}`);
       setUsers(res.data);
     } catch (err) {
       console.error("Error fetching data:", err);
