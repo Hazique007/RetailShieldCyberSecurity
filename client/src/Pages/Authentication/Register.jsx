@@ -20,6 +20,7 @@ const Register = () => {
   const [confirm, setConfirm] = useState('');
   const [registeredIp, setregisteredIp] = useState('');
   const [otpTransformation, setOtpTransformation] = useState('');
+  const [loading, setLoading] = useState(false);
   const [securityAnswer, setSecurityAnswer] = useState('');
   const passwordRef = useRef();
 
@@ -36,12 +37,15 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
 
+
     if (password !== confirm) return toast.error("❌ Passwords do not match");
     if (!otpTransformation) return toast.error("🔒 Please select OTP transformation");
+    setLoading(true);
 
     const biometricProfile = extractFeatures(password);
     if (biometricProfile.length === 0)
       return toast.error("⚠️ Typing pattern not captured properly. Try again.");
+    setLoading(false);
 
     try {
       const response = await axios.post('https://retailshieldcybersecurity-1.onrender.com/api/auth/register', {
@@ -60,6 +64,8 @@ const Register = () => {
       setTimeout(() => navigate('/'), 1200);
     } catch (err) {
       toast.error(err?.response?.data?.message || "Registration failed");
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -170,14 +176,43 @@ const Register = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              disabled={!registeredIp || !name || !email || !password || !confirm || !otpTransformation || !securityAnswer}
+              disabled={
+                !registeredIp ||
+                !name ||
+                !email ||
+                !password ||
+                !confirm ||
+                !otpTransformation ||
+                !securityAnswer ||
+                loading
+              }
               className={`w-full py-2 rounded-lg font-semibold text-white transition
-                ${(!registeredIp || !name || !email || !password || !confirm || !otpTransformation || !securityAnswer)
+    ${(!registeredIp || !name || !email || !password || !confirm || !otpTransformation || !securityAnswer || loading)
                   ? 'bg-gray-400 cursor-not-allowed'
                   : 'bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90'}`}
             >
-              {registeredIp ? 'Create Account' : 'Fetching IP...'}
+              {!registeredIp ? 'Fetching IP...' : loading ? (
+                <div className="flex justify-center items-center space-x-2">
+                  <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v8H4z"
+                    ></path>
+                  </svg>
+                  <span>Registering...</span>
+                </div>
+              ) : 'Create Account'}
             </button>
+
           </form>
 
           <div className="mt-6 text-center">
