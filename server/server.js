@@ -15,7 +15,8 @@ dotenv.config();
 const app = express();
 app.use(cors({
   origin: [
-    "http://localhost:5174",
+    "http://localhost:5173",
+    "https://retail-shield-cyber-security.vercel.app",
     "https://retail-shield-cyber-security-zmlz.vercel.app"
   ],
   credentials: true,
