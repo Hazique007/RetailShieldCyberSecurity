@@ -3,7 +3,6 @@ import axios from "axios";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-
 // Custom toast
 const Toast = ({ message, type }) => (
   <div className={`fixed top-5 right-5 px-4 py-2 rounded shadow-md z-50 text-white transition duration-300
@@ -28,6 +27,14 @@ const ManageUsers = () => {
   const [toast, setToast] = useState(null);
 
   const usersPerPage = 8;
+
+  // Get logged-in user's email from localStorage safely
+  const currentUser = localStorage.getItem("user");
+  const parsedUser = JSON.parse(currentUser)
+  const rawEmail = parsedUser.email
+  console.log(parsedUser.email);
+
+  const loggedInEmail = rawEmail ? rawEmail.replace(/"/g, "") : "";
 
   useEffect(() => {
     fetchUsers();
@@ -54,7 +61,6 @@ const ManageUsers = () => {
   };
 
   const handleDelete = async (id) => {
-    // if (!window.confirm("Are you sure you want to delete this user?")) return;
     try {
       await axios.delete(`https://retailshieldcybersecurity.onrender.com/api/auth/${id}`);
       fetchUsers();
@@ -166,19 +172,15 @@ const ManageUsers = () => {
                       <td className="px-6 py-2">{user.email}</td>
                       <td className="px-6 py-2">{user.registeredIp}</td>
                       <td className="px-6 py-2">
-                        <span
-                          className={`px-2 py-1 rounded text-xs font-medium
-      ${user.complianceScore < 60
-                              ? 'bg-red-100 text-red-700'
-                              : user.complianceScore < 80
-                                ? 'bg-yellow-100 text-yellow-800'
-                                : 'bg-green-100 text-green-700'
-                            }`}
-                        >
+                        <span className={`px-2 py-1 rounded text-xs font-medium
+                          ${user.complianceScore < 60
+                            ? 'bg-red-100 text-red-700'
+                            : user.complianceScore < 80
+                              ? 'bg-yellow-100 text-yellow-800'
+                              : 'bg-green-100 text-green-700'}`}>
                           {user.complianceScore}
                         </span>
                       </td>
-
                       <td className="px-6 py-2">{user.riskScore}</td>
                       <td className="px-6 py-2">
                         <select
@@ -210,50 +212,72 @@ const ManageUsers = () => {
                     <>
                       <td className="px-6 py-2 font-medium flex flex-col">
                         <span>{user.name}</span>
-                        <Link
-                          to={`/employee-dashboard/${user._id}`}
-                          className="text-blue-500 text-xs hover:underline mt-1"
-                        >
-                          View Dashboard
-                        </Link>
+                        {loggedInEmail === "test2@gmail.com" ? (
+                          <span
+                            title="Not authorized (test user)"
+                            className="text-gray-400 text-xs mt-1 cursor-not-allowed"
+                          >
+                            View Dashboard
+                          </span>
+                        ) : (
+                          <Link
+                            to={`/employee-dashboard/${user._id}`}
+                            className="text-blue-500 text-xs hover:underline mt-1"
+                          >
+                            View Dashboard
+                          </Link>
+                        )}
                       </td>
-
                       <td className="px-6 py-2">{user.email}</td>
                       <td className="px-6 py-2">{user.registeredIp}</td>
                       <td className="px-6 py-2">
-                        <span
-                          className={`px-2 py-1 rounded text-xs font-medium
-      ${user.complianceScore < 60
-                              ? 'bg-red-100 text-red-700'
-                              : user.complianceScore < 80
-                                ? 'bg-yellow-100 text-yellow-800'
-                                : 'bg-green-100 text-green-700'
-                            }`}
-                        >
+                        <span className={`px-2 py-1 rounded text-xs font-medium
+                          ${user.complianceScore < 60
+                            ? 'bg-red-100 text-red-700'
+                            : user.complianceScore < 80
+                              ? 'bg-yellow-100 text-yellow-800'
+                              : 'bg-green-100 text-green-700'}`}>
                           {user.complianceScore}
                         </span>
                       </td>
-
                       <td className="px-6 py-2">{user.riskScore}</td>
                       <td className="px-6 py-2 capitalize font-semibold">
-                        <span
-                          className={`px-2 py-1 rounded text-xs ${user.role === "admin"
-                            ? "bg-blue-100 text-blue-700"
-                            : "bg-green-100 text-green-700"
-                            }`}
-                        >
+                        <span className={`px-2 py-1 rounded text-xs ${user.role === "admin"
+                          ? "bg-blue-100 text-blue-700"
+                          : "bg-green-100 text-green-700"}`}>
                           {user.role}
                         </span>
                       </td>
                       <td className="px-6 py-2 flex items-center gap-3">
-                        <FaEdit
-                          onClick={() => startEdit(user)}
-                          className="text-blue-500 hover:text-blue-700 cursor-pointer"
+                        {loggedInEmail === "test2@gmail.com" ? (
+                          <FaEdit
+                            title="Not authorized (test user)"
+                            className="text-gray-400 cursor-not-allowed"
+                          />
+                        ) : (
+                          <FaEdit
+                            onClick={() => startEdit(user)}
+                            className="text-blue-500 hover:text-blue-700 cursor-pointer"
+                          />
+                        )}
+
+                        {loggedInEmail === "test2@gmail.com"?(
+                           <FaTrash
+                           title="Not authorized (test user)"
+                          // onClick={() => handleDelete(user._id)}
+                          className="text-gray-400 cursor-not-allowed"
                         />
-                        <FaTrash
+
+
+                        ):(
+                           <FaTrash
                           onClick={() => handleDelete(user._id)}
                           className="text-red-500 hover:text-red-700 cursor-pointer"
                         />
+
+                        )}
+
+                       
                       </td>
                     </>
                   )}

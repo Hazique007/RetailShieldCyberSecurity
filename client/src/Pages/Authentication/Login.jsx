@@ -42,6 +42,7 @@ const Login = () => {
     setShowAnimation(false);
     setLoading(false);
     return;
+    
   }
 
   // ⏳ Delay API call by 5 seconds to show Lottie animation

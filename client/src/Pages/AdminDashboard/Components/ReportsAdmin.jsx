@@ -8,6 +8,11 @@ const SuspiciousUsers = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
+  const currentUser = localStorage.getItem("user");
+  const Parseduser = JSON.parse(currentUser)
+  const loggedEmail = Parseduser.email;
+  console.log(loggedEmail);
+
 
   const fetchUsers = async () => {
     setLoading(true);
@@ -64,11 +69,17 @@ const SuspiciousUsers = () => {
         />
 
         <button
-          className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-all duration-150"
+          className={`px-4 py-2 rounded-md transition-all duration-150 text-white 
+    ${loggedEmail === "test2@gmail.com"
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-green-500 hover:bg-green-600"}`}
           onClick={handleDownloadCSV}
+          disabled={loggedEmail === "test2@gmail.com"}
+          title={loggedEmail === "test2@gmail.com" ? "Not authorized (test user)" : ""}
         >
-          Download CSV
+          {loggedEmail === "test2@gmail.com" ? "Not Authorized" : "Download CSV"}
         </button>
+
       </div>
 
       <div className="overflow-x-auto rounded-lg shadow bg-white">
