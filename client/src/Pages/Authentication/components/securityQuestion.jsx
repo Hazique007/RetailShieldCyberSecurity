@@ -20,7 +20,7 @@ const SecurityQuestion = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post('https://retailshieldcybersecurity-1.onrender.com/api/auth/verify-security-question', {
+      const res = await axios.post('https://retailshieldcybersecurity.onrender.com/api/auth/verify-security-question', {
         email,
         answer,
       });

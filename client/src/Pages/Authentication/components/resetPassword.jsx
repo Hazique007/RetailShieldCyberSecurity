@@ -21,7 +21,7 @@ const ResetPassword = () => {
 
         setLoading(true);
         try {
-            await axios.post('https://retailshieldcybersecurity-1.onrender.com/api/auth/reset-password', {
+            await axios.post('https://retailshieldcybersecurity.onrender.com/api/auth/reset-password', {
                 email,
                 newPassword: password
             });

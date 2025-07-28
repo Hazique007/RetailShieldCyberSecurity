@@ -28,7 +28,7 @@ const SystemHealthCards = () => {
   useEffect(() => {
     const fetchHealth = async () => {
       try {
-        const res = await axios.get('https://retailshieldcybersecurity-1.onrender.com/api/empdash/system-health');
+        const res = await axios.get('https://retailshieldcybersecurity.onrender.com/api/empdash/system-health');
         console.log('System Health Data:', res.data);
         setHealth(res.data);
       } catch (err) {
@@ -52,7 +52,7 @@ const SystemHealthCards = () => {
           return;
         }
 
-        const res = await axios.get(`https://retailshieldcybersecurity-1.onrender.com/api/auth/suslogin?id=${id}`);
+        const res = await axios.get(`https://retailshieldcybersecurity.onrender.com/api/auth/suslogin?id=${id}`);
         if (res.data.length > 0) {
           const latest = res.data[res.data.length - 1];
           setSuspiciousLogin(latest);

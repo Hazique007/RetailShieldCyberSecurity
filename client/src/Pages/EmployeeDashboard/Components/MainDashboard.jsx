@@ -32,7 +32,7 @@ const MainDashboard = () => {
       setadminCheck(parsedadmin);
 
       try {
-        const res = await axios.get(`https://retailshieldcybersecurity-1.onrender.com/api/auth/users/${id}`);
+        const res = await axios.get(`https://retailshieldcybersecurity.onrender.com/api/auth/users/${id}`);
         setUser(res.data);
       } catch (err) {
         console.error('Error fetching user:', err);

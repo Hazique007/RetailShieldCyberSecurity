@@ -10,7 +10,7 @@ const POSSimulator = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post('https://retailshieldcybersecurity-1.onrender.com/api/pos/log', {
+      const response = await axios.post('https://retailshieldcybersecurity.onrender.com/api/pos/log', {
         terminalId,
         amount: parseFloat(amount),
         time,

@@ -15,7 +15,7 @@ const AdminDashCards = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await axios.get("https://retailshieldcybersecurity-1.onrender.com/api/stats");
+        const res = await axios.get("https://retailshieldcybersecurity.onrender.com/api/stats");
         setStats(res.data);
       } catch (err) {
         console.error("Failed to fetch admin stats:", err);

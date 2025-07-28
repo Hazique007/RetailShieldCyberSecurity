@@ -7,7 +7,7 @@ app = FastAPI()
 
 origins = [
     "https://retail-shield-cyber-security-zmlz.vercel.app/",  # your React/Vite frontend (local)
-    "https://retailshieldcybersecurity-1.onrender.com",  # your Node.js server
+    "https://retailshieldcybersecurity.onrender.com",  # your Node.js server
     "*"  # (Optional) allow all origins — use this in dev only
 ]
 

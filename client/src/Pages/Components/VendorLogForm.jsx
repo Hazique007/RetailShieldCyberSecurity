@@ -8,7 +8,7 @@ const VendorLogForm = () => {
 
   const submitLog = async () => {
     try {
-      await axios.post("https://retailshieldcybersecurity-1.onrender.com/api/vendor/log", {
+      await axios.post("https://retailshieldcybersecurity.onrender.com/api/vendor/log", {
         vendorName,
         action,
         ipAddress: window.location.hostname,

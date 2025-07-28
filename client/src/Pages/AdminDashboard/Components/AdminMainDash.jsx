@@ -11,7 +11,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchThreatStats = async () => {
       try {
-        const res = await axios.get('https://retailshieldcybersecurity-1.onrender.com/api/stats');
+        const res = await axios.get('https://retailshieldcybersecurity.onrender.com/api/stats');
         setThreatsOverTime(res.data.threatsOverTime || []);
       } catch (err) {
         console.error('Error fetching threat stats:', err);
@@ -20,7 +20,7 @@ const Dashboard = () => {
 
     const fetchActivityStats = async () => {
       try {
-        const res = await axios.get('https://retailshieldcybersecurity-1.onrender.com/api/stats/actstats');
+        const res = await axios.get('https://retailshieldcybersecurity.onrender.com/api/stats/actstats');
         setActivityDistribution(res.data || []);
       } catch (err) {
         console.error('Error fetching activity distribution:', err);

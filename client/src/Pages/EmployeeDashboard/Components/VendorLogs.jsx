@@ -13,7 +13,7 @@ const VendorLogs = () => {
   const fetchLogs = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("https://retailshieldcybersecurity-1.onrender.com/api/vendor/logs");
+      const res = await axios.get("https://retailshieldcybersecurity.onrender.com/api/vendor/logs");
       setLogs(res.data || []);
     } catch (err) {
       console.error("Failed to fetch vendor logs:", err);

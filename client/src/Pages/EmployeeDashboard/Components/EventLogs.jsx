@@ -22,7 +22,7 @@ const EventLogs = () => {
   const fetchLogs = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`https://retailshieldcybersecurity-1.onrender.com/api/pos/logs?page=${currentPage}`);
+      const res = await axios.get(`https://retailshieldcybersecurity.onrender.com/api/pos/logs?page=${currentPage}`);
       setLogs(res.data.data || []);
       setTotalPages(res.data.totalPages || 1);
     } catch (err) {

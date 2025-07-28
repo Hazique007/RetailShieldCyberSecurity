@@ -21,7 +21,7 @@ const PosRiskDonutChart = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await axios.get("https://retailshieldcybersecurity-1.onrender.com/api/pos/stats");
+        const res = await axios.get("https://retailshieldcybersecurity.onrender.com/api/pos/stats");
         const labels = [];
         const data = [];
         const colorMap = {

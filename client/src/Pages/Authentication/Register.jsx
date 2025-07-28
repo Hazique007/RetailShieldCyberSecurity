@@ -48,7 +48,7 @@ const Register = () => {
     setLoading(false);
 
     try {
-      const response = await axios.post('https://retailshieldcybersecurity-1.onrender.com/api/auth/register', {
+      const response = await axios.post('https://retailshieldcybersecurity.onrender.com/api/auth/register', {
         name,
         email,
         password,

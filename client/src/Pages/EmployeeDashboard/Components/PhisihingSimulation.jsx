@@ -13,7 +13,7 @@ const PhishingSimulation = () => {
     setError(null);
 
     try {
-      const res = await axios.post("https://retailshieldcybersecurity-1.onrender.com/api/phishing/analyze", {
+      const res = await axios.post("https://retailshieldcybersecurity.onrender.com/api/phishing/analyze", {
         text: emailText,
       });
 

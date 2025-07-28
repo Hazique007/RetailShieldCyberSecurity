@@ -29,7 +29,7 @@ const POSMonitor = () => {
 
   const fetchEvents = async () => {
     try {
-      const res = await axios.get("https://retailshieldcybersecurity-1.onrender.com/api/pos/all");
+      const res = await axios.get("https://retailshieldcybersecurity.onrender.com/api/pos/all");
       const logs = res.data.data || [];
       setEvents(logs);
       calculateStats(logs);
