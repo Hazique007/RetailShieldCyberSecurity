@@ -2,18 +2,20 @@
 
 RetailShield is a secure, intelligent authentication system for retail applications that detects threats using behavioral biometrics, IP validation, and OTP transformation logic. It aims to enhance login security by learning user-specific typing patterns and flagging suspicious login attempts based on behavioral deviation or IP mismatch.
 
-## 🧪 Key Features
+## 📦 MVP – Unique Authentication Stack
 
-| Feature                        | Description                                               |
-|-------------------------------|-----------------------------------------------------------|
-| ✅ Keystroke Biometrics       | Validates user identity based on typing behavior          |
-| 🔐 OTP Transformation         | User-defined rules like reverse, prefix_42, shift +1/-1   |
-| ❓ Security Question Fallback | Triggered if biometric behavior seems suspicious          |
-| 📬 Email Alerts               | For suspicious logins, lockouts, or password changes      |
-| 🚫 Lockout System             | Locks users for 24 hrs after 3 failed logins              |
-| 📊 Compliance Score           | Risk-based scoring to monitor employee behavior           |
-| 🧠 AI Comparison Engine       | ML model predicts biometric authenticity (valid/suspicious/rejected) |
+RetailShield introduces a **first-of-its-kind multi-layered authentication** system that doesn't rely solely on passwords or OTPs — it *learns* how users behave and adapts in real-time to protect against impersonation, phishing, and social engineering.
 
+### 🔐 Key Innovations in Authentication Flow:
+
+| Layer                        | Description |
+|-----------------------------|-------------|
+| 🧠 **Keystroke Biometrics** | At login, the system captures how the user types (dwell & flight times), and compares it with a trained biometric baseline using machine learning (One-Class SVM). If it doesn't match, login is flagged. |
+| 🔁 **OTP Transformation Layer** | Instead of a static OTP, users receive a hint to apply a transformation (like `reverse`, `prefix_42`, or `shift_+1`) before inputting it. This defeats traditional OTP intercept or brute force attacks. |
+| ❓ **Security Question Fallback** | If the biometric profile is suspicious or unknown, the system falls back to an additional security question. |
+| 📊 **Compliance Score Tracking** | Every login attempt is scored in terms of biometric confidence, password strength, and suspicious patterns — giving admins insight into potential internal threats. |
+
+> 🛡️ This unique blend of **“how you type + how you think”** makes RetailShield resilient against stolen credentials, OTP sniffing, and insider attacks — even if the attacker knows the correct password.
 
 ## 🧠 Problem Statement
 
@@ -48,8 +50,6 @@ In the past few years, cybersecurity has shifted focus — from purely technical
  -🎰 In 2023, MGM Resorts lost over $100 million after one successful helpdesk scam gave attackers internal access.
 
 These weren’t software bugs — they were employee-side vulnerabilities.
-
-## This is where Retail Shield comes in: a behavioral security platform that uses keystroke biometrics, multi-layered authentication, and real-time risk monitoring to protect your employees from becoming your weakest link.
 
 ## 💡 Why This Matters for Retail
 
@@ -96,6 +96,24 @@ Retail Shield stops attackers, even if they have the correct password.
 - 📊 Charts for biometric trends  
 - 📱 Mobile biometric input  
 - 🛡️ Multi-factor authentication with WebAuthn
+
+
+
+
+## Production Guide
+ - Client -> npm install | npm run dev
+ - Server -> npm install | npm run dev
+ - Backend ->  pip install -r requirements.txt | uvicorn main:app --reload --port 8000
+
+## Testing Credentials
+ - Admin -> test2@gmail.com | 123456  ( remember to type 123 then gap of 1sec then 456)
+ - User -> test@gmail.com | 123456 ( remember to type 123 then gap of 1sec then 456)
+ - If you want to see how it will detect suspicious activity then try typing 123456 in one go slowly and steadily  and you will see the project in action.
+   
+## NOTE
+The website shown at the start of the video was just for pitching the idea and explaining how it's different from others.
+
+🔗 You can check out the live website here: [retailshield-smart-auth.vercel.app](https://retailshield-smart-auth.vercel.app/)
 
 ## 🤝 Let’s Collaborate
 
